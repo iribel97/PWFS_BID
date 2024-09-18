@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/cart.css" />
+    <title>Tienda Virtual</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <a href="./index.html" class="header-logo">
+          <img
+            class="header-logo-img"
+            src="./assets/tiendamia-logo.svg"
+            width="218"
+            alt="Logo store"
+          />
+        </a>
+        <form class="header-form">
+          <input
+            class="header-input"
+            type="text"
+            placeholder="Search"
+            id="search"
+          />
+        </form>
+        <ul class="header-social"></ul>
+      </div>
+      <nav id="navbar"></nav>
+    </header>
+    <section class="hero-section">
+      <article class="hero-title">
+        <span class="hero-span">tecnología</span>
+        <span class="hero-span">renovada</span>
+      </article>
+    </section>
+    <main>
+      <section class="cart-section">
+        <article id="productscart"></article>
+        <article id="total"></article>
+      </section>
+    </main>
+    <footer>
+      <div id="footer" class="footer-container"></div>
+      <div class="footer-copyright">Curso de HTML + CSS 2023</div>
+    </footer>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="./scripts/cart.js"></script>
+</html>

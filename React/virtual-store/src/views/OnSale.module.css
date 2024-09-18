@@ -1,0 +1,21 @@
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.btn-navigation {
+    background-color: #7525a7;
+    border: 1px solid #383838;
+    color: #fffcfc;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-navigation:hover {
+    background-color: #cf9cee;
+    color: #383838;
+}

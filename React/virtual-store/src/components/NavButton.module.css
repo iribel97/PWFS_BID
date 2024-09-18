@@ -1,0 +1,20 @@
+.nav-li {
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.navA {
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 150px;
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+.navA:hover {
+    text-decoration: underline;
+}

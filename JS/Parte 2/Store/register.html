@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro De Usuario - TiendaMia</title>
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/register.css" />
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="./index.html" class="header-logo">
+                <img class="header-logo-img" src="./assets/tiendamia-logo.svg" width="218" alt="Logo store" />
+            </a>
+            <form class="header-form">
+                <input class="header-input" type="text" placeholder="Search" id="search" />
+            </form>
+            <ul class="header-social"></ul>
+        </div>
+        <nav id="navbar"></nav>
+    </header>
+    <div class="formulario-contenedor">
+        <div class="register-container">
+            <h1>Regístrate</h1>
+            <form id="registerForm">
+                <input type="email" id="email" name="email" placeholder="Tu dirección de E-mail" required />
+                <input type="password" id="password" name="password" placeholder="Contraseña para tiendamia" required />
+                <p>(?) La contraseña debe tener al menos 6 caracteres.</p>
+                <div class="checkbox">
+                    <input type="checkbox" id="offers" name="offers" />
+                    <label for="offers">Recibir Ofertas!</label>
+                </div>
+                <input id="btn-sub" type="submit" value="Regístrate" />
+            </form>
+            <p>
+                * Al ingresar con Facebook o Google estás aceptando recibir ofertas
+                por
+                email Tiendamia está protegida por reCAPTCHA y se aplican la
+                <a href="#">Política de Privacidad</a> y los
+                <a href="#">Términos de Servicio de Google</a>.
+            </p>
+            <div class="divider">¿Ya tienes una cuenta?</div>
+            <div class="login-link">
+                <a href="login.html">Ingresar</a>
+            </div>
+            <p>
+                Al registrarte estás aceptando nuestros
+                <a href="#">Términos y Condiciones</a> y nuestras
+                <a href="#">Políticas de Privacidad</a>.
+            </p>
+        </div>
+    </div>
+
+
+    <script type="module" src="./scripts/register.js"></script>
+</body>
+
+</html>

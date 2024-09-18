@@ -1,0 +1,97 @@
+.formulario-contenedor {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px 35%;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    margin: 5px 0 5px 0;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #d32f2f;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.register-link {
+    margin-top: 20px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider::before {
+    margin-right: 0.25em;
+}
+
+.divider::after {
+    margin-left: 0.25em;
+}
+
+.login-container p {
+    font-size: 12px;
+    color: #777;
+}
+
+.login-container p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+

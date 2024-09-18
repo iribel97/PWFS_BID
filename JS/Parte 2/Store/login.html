@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - TiendaMia</title>
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/login.css" />
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="./index.html" class="header-logo">
+                <img class="header-logo-img" src="./assets/tiendamia-logo.svg" width="218" alt="Logo store" />
+            </a>
+            <form class="header-form">
+                <input class="header-input" type="text" placeholder="Search" id="search" />
+            </form>
+            <ul class="header-social"></ul>
+        </div>
+        <nav id="navbar"></nav>
+    </header>
+    <div class="formulario-contenedor">
+        <div class=" login-container">
+            <h1>Ingresar</h1>
+            <form id="loginForm">
+                <input type="email" id="email" name="email" placeholder="Tu dirección de E-mail" required />
+                <input type="password" id="password" name="password" placeholder="Contraseña" required />
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <input type="submit" value="Ingresar" />
+            </form>
+            <p>
+                * Al ingresar con Facebook o Google estás aceptando recibir ofertas
+                por email Tiendamia está protegida por reCAPTCHA y se aplican la
+                <a href="#">Política de Privacidad</a> y los
+                <a href="#">Términos de Servicio de Google</a>.
+            </p>
+            <div class="divider">¿No tienes una cuenta?</div>
+            <div class="register-link">
+                <a href="register.html">Regístrate</a>
+            </div>
+            <p>
+                Al registrarte estás aceptando nuestros
+                <a href="#">Términos y Condiciones</a> y nuestras
+                <a href="#">Políticas de Privacidad</a>.
+            </p>
+        </div>
+
+    </div>
+
+    <script type="module" src="./scripts/login.js"></script>
+</body>
+
+</html>

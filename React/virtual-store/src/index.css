@@ -1,0 +1,37 @@
+/*IMPLEMENTANDO TAILWIND*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root,
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+}
+
+/* MAIN */
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* MAIN PRODUCTS */
+.product-container {
+  width: 1080px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
