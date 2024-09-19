@@ -25,6 +25,16 @@ FROM empleados e
 WHERE e.edad < (SELECT MIN(e2.edad)
                 FROM empleados e2
                 WHERE e2.departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Recursos Humanos'));
+                
+# Resolución propuesta por Iri
+SELECT e.nombre, e.apellido, e.edad
+FROM empleados e
+WHERE e.edad < ANY (
+    SELECT e2.edad
+    FROM empleados e2
+    JOIN departamentos d ON e2.departamento_id = d.id
+    WHERE d.nombre = 'Recursos Humanos'
+);
 
 -- Encuentra los productos cuyos precios sean menores o iguales a todos los precios de los productos con la palabra "Cámara" en su nombre.
 SELECT nombre
@@ -47,6 +57,16 @@ WHERE departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Ventas')
 AND salario < (SELECT AVG(salario)
                 FROM empleados
                 WHERE departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Ventas'));
+                
+# Resolución propuesta por Iri
+SELECT nombre, salario
+FROM empleados
+WHERE salario < (
+    SELECT AVG(e2.salario)
+    FROM empleados e2
+    JOIN departamentos d2 ON e2.departamento_id = d2.id
+    WHERE d2.nombre = 'Ventas'
+);
 
 -- Encuentra los clientes que han realizado compras de productos con un precio_unitario inferior al precio promedio de todos los productos.
 SELECT c.nombre, c.direccion
@@ -55,6 +75,13 @@ JOIN ventas v ON c.id = v.cliente_id
 JOIN productos p ON v.producto_id = p.id
 WHERE v.precio_unitario < (SELECT AVG(p2.precio) FROM productos p2);
 
+# Resolución propuesta por Iri
+SELECT DISTINCT c.id, c.nombre, c.direccion
+FROM clientes c
+JOIN ventas v ON c.id = v.cliente_id
+WHERE v.precio_unitario < (
+    SELECT AVG(precio) FROM productos
+);
 
 -- Encuentra los empleados que tienen un salario igual al salario de al menos un empleado del departamento de "Recursos Humanos".
 SELECT nombre, salario
@@ -64,6 +91,15 @@ WHERE salario = ANY (
     FROM empleados
     WHERE departamento_id = (SELECT id FROM departamentos WHERE nombre = 'Recursos Humanos'));
 
+# Resolución propuesta por Iri
+SELECT *
+FROM empleados 
+WHERE salario = ANY (
+    SELECT e2.salario
+    FROM empleados e2
+    JOIN departamentos d ON e2.departamento_id = d.id
+    WHERE d.nombre = 'Recursos Humanos'
+);
 
 -- Encuentra los productos cuyo precio es mayor o igual a todos los precios de los productos con la palabra "Refrigeradora" en su nombre.
 SELECT nombre
