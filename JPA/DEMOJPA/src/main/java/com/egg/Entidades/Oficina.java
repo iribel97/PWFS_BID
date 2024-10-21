@@ -93,4 +93,16 @@ public class Oficina {
         this.codigoPostal = codigoPostal;
     }
 
+    @Override
+    public String toString() {
+        return "Oficina{" +
+                "idOficina=" + idOficina +
+                ", codigodOficina='" + codigodOficina + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", pais='" + pais + '\'' +
+                ", region='" + region + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                '}';
+    }
 }
