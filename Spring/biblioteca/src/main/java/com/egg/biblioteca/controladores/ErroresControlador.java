@@ -50,7 +50,7 @@ public class ErroresControlador implements ErrorController {
 	}
 
 	private int getErrorCode(HttpServletRequest httpRequest) {
-		return (Integer) httpRequest.getAttribute("javax.servlet.error.status_code");
+		return (Integer) httpRequest.getAttribute("jakarta.servlet.error.status_code");
 	}
 
 	

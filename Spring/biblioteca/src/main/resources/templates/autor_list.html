@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" >
         <title>Biblioteca Egg</title>
-        <link href="css/one-page-wonder.min.css" rel="stylesheet">
+        <!-- <link href="css/one-page-wonder.min.css" rel="stylesheet"> -->
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/index.css">
@@ -132,7 +132,7 @@
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        <a th:href="@{/inicio }" class="btn btn-primary my-2">Volver</a>
+                        <a th:href="@{/inicio}" class="btn btn-primary my-2">Volver</a>
                         </p>
                     </div>
                 </div>
@@ -140,15 +140,7 @@
 
         </div>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
+        <footer th:replace="~{/fragments/footer :: footer}"></footer>
 
 
 
