@@ -43,7 +43,7 @@
 
         <div class="container-fluid m-5 contenedor">
 
-            <form class="formulario" th:action="@{/registro}" method="POST">
+            <form class="formulario" th:action="@{/registro}" method="POST" enctype="multipart/form-data" >
 
 
                 <div class="form-group my-3">
@@ -55,7 +55,13 @@
                 <div class="form-group my-3">
                     <input type="email" class="form-control" name="email" placeholder="EMAIL" th:value="${email}">
                 </div>
-
+                
+                
+                <div class="form-group my-3">
+                    <input type="file" class="form-control" name="archivo" >
+                </div>
+                
+                
                 <div class="form-group my-3">
                     <input type="password" class="form-control" name="password" placeholder="CONTRASEÑA" th:value="${password}">
                 </div>
@@ -82,7 +88,7 @@
                 <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
                 <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
                 <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>â¬†ï¸ </span> Back to top</a>
+                    <a href="#" style="text-decoration:none"><span>â¬ï¸</span> Back to top</a>
                 </p>
             </div>
         </footer>

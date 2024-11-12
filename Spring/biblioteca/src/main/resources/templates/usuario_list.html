@@ -38,31 +38,24 @@
                         </ul>
                     </li>
 
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Autores
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                             <li><a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')" th:href="@{/autor/registrar}">Crear Autor</a></li>
                             <li><hr class="dropdown-divider"></li>
-
                             <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
                         </ul>
                     </li>
-
-
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Editoriales
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                             <li><a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
                             <li><hr class="dropdown-divider"></li>
-
                             <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
                         </ul>
                     </li>
@@ -74,25 +67,21 @@
                             <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link " th:if="${session.usuariosession == null}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
                             Registrate!
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " th:if="${session.usuariosession == null}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
                             LOGIN!
                         </a>
-
                     </li>
                 </ul>
             </div>
         </nav>
 
         <div class="container m-5" >
-
             <table class="table table-dark">
                 <thead class="align-items-center">
                     <tr >
@@ -150,7 +139,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
 
         <footer class="text-muted py-5">
@@ -174,5 +162,4 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
-
 </html>

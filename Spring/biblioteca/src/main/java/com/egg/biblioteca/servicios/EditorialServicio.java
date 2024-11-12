@@ -23,8 +23,8 @@ public class EditorialServicio {
     }
 
     @Transactional
-    public void crearEditorial(String nombre) throws MiException{
-        
+    public void crearEditorial(String nombre) throws MiException {
+
         validar(nombre);
         Editorial editorial = new Editorial();
         editorial.setNombre(nombre);
@@ -35,9 +35,9 @@ public class EditorialServicio {
     public List<Editorial> listarEditoriales() {
         return editorialRepositorio.findAll();
     }
-    
+
     @Transactional
-    public void modificarEditorial(UUID id, String nombre) throws MiException{
+    public void modificarEditorial(UUID id, String nombre) throws MiException {
         validar(nombre);
 
         Optional<Editorial> respuesta = editorialRepositorio.findById(id);
@@ -50,9 +50,9 @@ public class EditorialServicio {
             throw new MiException("No se encontró una editorial con el ID especificado");
         }
     }
-    
+
     @Transactional
-    public void eliminar(UUID id) throws MiException{
+    public void eliminar(UUID id) throws MiException {
         Optional<Editorial> editorialOpt = editorialRepositorio.findById(id);
         if (editorialOpt.isPresent()) {
             editorialRepositorio.delete(editorialOpt.get());
@@ -68,7 +68,12 @@ public class EditorialServicio {
     }
 
     @Transactional(readOnly = true)
-    public Editorial getOne(UUID id) {
-        return editorialRepositorio.getReferenceById(id);
+    public Editorial getOne(UUID id) throws MiException {
+        Optional<Editorial> editorialOpt = editorialRepositorio.findById(id);
+        if (editorialOpt.isPresent()) {
+            return editorialOpt.get();
+        } else {
+            throw new MiException("No se encontró una editorial con el ID especificado");
+        }
     }
 }

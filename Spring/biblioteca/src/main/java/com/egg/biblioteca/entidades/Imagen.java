@@ -2,6 +2,7 @@
 package com.egg.biblioteca.entidades;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,10 +20,10 @@ public class Imagen {
     private UUID id;
     
     private String mime;
-    
     private String nombre;
     
     @Lob @Basic(fetch = FetchType.LAZY)
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] contenido;
 
     public Imagen() {

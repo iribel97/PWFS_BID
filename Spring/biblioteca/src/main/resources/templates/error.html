@@ -19,13 +19,11 @@
                         <a class="nav-link " th:if="${session.usuariosession == null}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
                             Registrate!
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " th:if="${session.usuariosession == null}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
                             LOGIN!
                         </a>
-
                     </li>
                 </ul>
             </div>
@@ -36,18 +34,16 @@
                 <div class="tituloBiblioteca">
                     <a class="navbar-brand" th:text="'Error ' + ${codigo}">BIBLIOTECA EGG</a>
                     <p class="tituloLibros" th:text="${mensaje}"></p>
-                    
                 </div>
                 <section class="text-center container">
-			<div class="row mt-3">
-				<div class="divVolver">
-					<a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-				</div>
-			</div>
-		</section>
+			        <div class="row mt-3">
+                        <div class="divVolver">
+                            <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        </div>
+			        </div>
+		        </section>
                 <div class="container contenedorLibros">
                     <p class="tituloLibros" th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
-                   
                 </div>
                 <div class="bg-circle-1 bg-circle"></div>
                 <div class="bg-circle-2 bg-circle"></div>

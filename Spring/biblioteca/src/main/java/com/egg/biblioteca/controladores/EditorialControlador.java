@@ -56,8 +56,13 @@ public class EditorialControlador {
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable UUID id, ModelMap modelo) {
-        modelo.put("editorial", editorialServicio.getOne(id));
-
+        try {
+            modelo.put("editorial", editorialServicio.getOne(id));
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            return "editorial_list.html"; 
+        }
+    
         return "editorial_modificar.html";
     }
 

@@ -11,73 +11,60 @@
         <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
                 <a href="/" class="navbar-brand d-flex align-items-center">
-                  <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+                    <img class="logo" src="/img/Egg.png" alt="Img logo egg">
                 </a>
-              </div>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-              <ul class="navbar-nav ms-auto elementos">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Libros
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        
-                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
-                    </ul>
-                </li>
+                <ul class="navbar-nav ms-auto elementos">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Libros
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Autores
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
+                        </ul>
+                    </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Autores
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        
-                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                       
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
-                    </ul>
-                </li>
-
-
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Editoriales
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        
-                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        
-                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
-                    </ul>
-                </li>
-              </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Editoriales
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-          </nav>
+        </nav>
         <div class="container-fluid m-5 contenedor">
 
             <form class="formulario" th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
-                
                 <input hidden th:value="${id}" name="id">
                 
                 <div class="form-group my-3">
-                    
                     <label class="mb-2">Cargar Autores</label> 
-                    
                     <input th:value="${autor.nombre}" type="text" class="form-control" name="nombre">
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
-                
             </form>
 
             <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >

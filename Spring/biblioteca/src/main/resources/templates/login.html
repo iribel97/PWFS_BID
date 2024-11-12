@@ -11,57 +11,50 @@
         <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                  <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+                    <img class="logo" src="/img/Egg.png" alt="Img logo egg">
                 </a>
-              </div>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-              <ul class="navbar-nav ms-auto elementos">
-                <li class="nav-item">
-                    <a class="nav-link " href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
-                        Registrate!
-                    </a>
-                    
-                </li>
+                <ul class="navbar-nav ms-auto elementos">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
+                            Registrate!
+                        </a>
+                        
+                    </li>
 
-              </ul>
+                </ul>
             </div>
-          </nav>
-
-        
+        </nav>
 
         <div class="container-fluid m-5 contenedor">
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
-            <div class="card-body">
-                <h5 class="card-title">Error!</h5>
-                <p class="card-text" th:text="${error}"></p>
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+                <div class="card-body">
+                    <h5 class="card-title">Error!</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
             </div>
-        </div>
-        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-            <div class="card-body">
-                <h5 class="card-title">Exito!</h5>
-                <p class="card-text" th:text="${exito}"></p>
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
             </div>
-        </div>
 
             <form class="formulario" th:action="@{/logincheck}" method="POST">
-
-
                 <div class="form-group my-3">
                     <h3 class="card-title">Accede a la Biblioteca!</h3>
                 </div>
-               
                 <div class="form-group my-3">
                     <input type="email" class="form-control" name="email" placeholder="EMAIL">
                 </div>
-
                 <div class="form-group my-3">
                     <input type="password" class="form-control" name="password" placeholder="CONTRASEÑA">
                 </div>
-                
-
+    
                 <button type="submit" class="btn btn-primary mt-3 botones">Ingresar!</button>
             </form>
 

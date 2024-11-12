@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="ISO-8859-1">
-        <title>Modificar Libro</title>
+        <title>Registro de Autores</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/formulario.css">
     </head>
@@ -24,39 +24,30 @@
                             Libros
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
                             <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            
                             <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
                         </ul>
                     </li>
-
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Autores
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
                             <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
                             <li><hr class="dropdown-divider"></li>
-                        
                             <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
                         </ul>
                     </li>
-
-
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Editoriales
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
                             <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            
                             <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
                         </ul>
                     </li>
@@ -65,37 +56,14 @@
         </nav>
         <div class="container-fluid m-5 contenedor">
 
-            <form class="formulario" th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST">
-                <input hidden th:value= "${isbn}" name="isbn">
-
+            <form class="formulario" th:action="@{/editorial/modificar/__${editorial.id}__}" method="POST">
+                <input hidden th:value="${id}" name="id">
+                
                 <div class="form-group my-3">
-                    <label class="mb-2">Modificar Libro</label> 
-
-                    <input th:value="${libro.titulo}" type="text" class="form-control" name="titulo" placeholder="Titulo">
+                    <label class="mb-2">Cargar Editoriales</label> 
+                    <input th:value="${editorial.nombre}" type="text" class="form-control" name="nombre">
                 </div>
 
-                <div class="form-group my-3">
-                    <label class="mb-2">Ejemplares</label> 
-                    <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares" placeholder="Cantidad de Ejemplares">
-                </div>
-                <div class="form-group my-3">
-                    <select name="idAutor">
-                        <option>Seleccionar Autor</option>
-                        <option th:each="autor : ${autores}"
-                                th:value="${autor.id}" 
-                                th:text="${autor.nombre}"
-                                />
-                    </select>
-                </div>
-                <div class="form-group my-3">
-                    <select name="idEditorial">
-                        <option>Seleccionar Editorial</option>
-                        <option th:each="editorial : ${editoriales}"
-                                th:value="${editorial.id}" 
-                                th:text="${editorial.nombre}"
-                                />
-                    </select>
-                </div>
                 <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
             </form>
 
@@ -114,7 +82,7 @@
             <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
-                        <a th:href="@{/index}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
                     </div>
                 </div>
             </section>
@@ -133,4 +101,4 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
-</html>
+</html> 
