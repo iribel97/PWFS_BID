@@ -3,6 +3,7 @@ package com.egg.casaElectricidad.entidades;
 import java.util.UUID;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class Fabrica {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFabrica;
 
+    @NotNull(message = "El nombre de la fabrica no puede estar vacio.")
     @Column(nullable = false)
     private String nombreFabrica;
 

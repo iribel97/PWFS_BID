@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import com.egg.casaElectricidad.enumeraciones.Rol;
 import java.util.UUID;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,13 +17,16 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    
+
+    @NotNull(message = "El nombre del usuario no puede estar vacio.")
     @Column(nullable = false, unique = true)
     private String nombre;
 
+    @NotNull(message = "El email no puede estar vacio.")
     @Column(nullable = false)
     private String email;
-    
+
+    @NotNull(message = "La contraseña no puede estar vacia.")
     @Column(nullable = false)
     private String password;
 
