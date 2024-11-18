@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificar Fábrica</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+  <h1>Modificar Fábrica</h1>
+
+  <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+  <form th:action="@{/fabrica/modificar/__${fabrica.idFabrica}__}" method="POST" class="form">
+    <div class="form-group">
+      <label for="nombreFabrica">Nombre de la Fábrica:</label>
+      <input type="text" class="form-control" name="nombreFabrica"
+             id="nombreFabrica" th:value="${fabrica.nombreFabrica}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a href="/fabrica/lista" class="btn btn-secondary">Volver</a>
+  </form>
+</div>
+</body>
+</html>

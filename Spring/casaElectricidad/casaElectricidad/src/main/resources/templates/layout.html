@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Electricidad</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a th:href="@{/}">Casa Electricidad</a>
+  </div>
+  <div class="navbar-menu">
+    <a th:href="@{/articulo/lista}" class="nav-link">Artículos</a>
+    <a th:href="@{/fabrica/lista}" class="nav-link">Fábricas</a>
+    <div sec:authorize="hasRole('ADMIN')" class="nav-link dropdown">
+      <span>Administración</span>
+      <div class="dropdown-content">
+        <a th:href="@{/admin/usuarios}">Usuarios</a>
+        <a th:href="@{/admin/reportes}">Reportes</a>
+      </div>
+    </div>
+    <div class="nav-auth">
+      <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="btn btn-primary">Iniciar Sesión</a>
+      <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST" class="logout-form">
+        <button type="submit" class="btn btn-outline">Cerrar Sesión</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div th:if="${error != null}" class="alert alert-danger">
+    <span th:text="${error}"></span>
+  </div>
+  <div th:if="${exito != null}" class="alert alert-success">
+    <span th:text="${exito}"></span>
+  </div>
+
+  <div th:replace="${content}">
+    <!-- Contenido específico de cada página -->
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2024 Casa Electricidad. Todos los derechos reservados.</p>
+  </div>
+</footer>
+</body>
+</html>

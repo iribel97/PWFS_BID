@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: nav"></nav>
+
+<div class="container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Panel de Administración</h1>
+        <p class="dashboard-subtitle">Gestiona tu tienda de manera eficiente</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Tarjeta de Usuarios -->
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="card-info">
+                <h3>Usuarios</h3>
+                <p class="card-number" th:text="${#lists.size(usuarios)}">0</p>
+            </div>
+            <a th:href="@{/admin/usuarios}" class="card-link">Gestionar Usuarios</a>
+        </div>
+
+        <!-- Tarjeta de Artículos -->
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-box"></i>
+            </div>
+            <div class="card-info">
+                <h3>Artículos</h3>
+                <p class="card-number" th:text="${#lists.size(articulos)}">0</p>
+            </div>
+            <a th:href="@{/articulo/lista}" class="card-link">Gestionar Artículos</a>
+        </div>
+
+        <!-- Tarjeta de Fábricas -->
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-industry"></i>
+            </div>
+            <div class="card-info">
+                <h3>Fábricas</h3>
+                <p class="card-number" th:text="${#lists.size(fabricas)}">0</p>
+            </div>
+            <a th:href="@{/fabrica/lista}" class="card-link">Gestionar Fábricas</a>
+        </div>
+
+        <!-- Tarjeta de Reportes -->
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="card-info">
+                <h3>Reportes</h3>
+                <p>Ver estadísticas</p>
+            </div>
+            <a th:href="@{/admin/reportes}" class="card-link">Ver Reportes</a>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Fábricas</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Fábricas</h1>
+
+    <div th:if="${exito != null}" class="alert alert-success" th:text="${exito}"></div>
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+    <a href="/fabrica/registrar" class="btn btn-primary">Nueva Fábrica</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fabrica : ${fabricas}">
+            <td th:text="${fabrica.idFabrica}"></td>
+            <td th:text="${fabrica.nombreFabrica}"></td>
+            <td>
+                <a th:href="@{/fabrica/modificar/__${fabrica.idFabrica}__}" class="btn btn-edit">Editar</a>
+                <form th:action="@{/fabrica/eliminar/__${fabrica.idFabrica}__}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
