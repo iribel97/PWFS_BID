@@ -34,8 +34,8 @@ public class UsuarioServicio{
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     
-    // @Autowired
-    // private ImagenServicio imagenServicio;
+    @Autowired
+    private ImagenServicio imagenServicio;
     
 
     @Transactional
@@ -50,54 +50,54 @@ public class UsuarioServicio{
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         
-        // Imagen imagen = imagenServicio.guardar(archivo);
+        Imagen imagen = imagenServicio.guardar(archivo);
 
-        // usuario.setImagen(imagen);
+        usuario.setImagen(imagen);
         
         usuarioRepositorio.save(usuario);
     }
 
-    // @Transactional
-    // public void actualizar(MultipartFile archivo, UUID idUsuario, String nombre, String email, String password, String password2) throws MiException {
+    @Transactional
+    public void actualizar(MultipartFile archivo, UUID idUsuario, String nombre, String email, String password, String password2) throws MiException {
 
-    //     validar(nombre, email, password, password2);
+        validar(nombre, email, password, password2);
 
-    //     Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-    //     if (respuesta.isPresent()) {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
 
-    //         Usuario usuario = respuesta.get();
-    //         usuario.setNombre(nombre);
-    //         usuario.setEmail(email);
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
 
-    //         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 
-    //         usuario.setRol(Rol.USER);
+            usuario.setRol(Rol.USER);
             
-    //         UUID idImagen = null;
+            UUID idImagen = null;
             
-    //         if (usuario.getImagen() != null) {
-    //             idImagen = usuario.getImagen().getId();
-    //         }
+            if (usuario.getImagen() != null) {
+                idImagen = usuario.getImagen().getId();
+            }
             
-    //         Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+            Imagen imagen = imagenServicio.actualizar(idImagen, archivo);
             
-    //         usuario.setImagen(imagen);
+            usuario.setImagen(imagen);
             
-    //         usuarioRepositorio.save(usuario);
-    //     }
+            usuarioRepositorio.save(usuario);
+        }
 
-    // }
+    }
     
-    // public Usuario getOne(UUID id){
-    //     Optional<Usuario> usuarioOpt = usuarioRepositorio.findById(id);
+    public Usuario getOne(UUID id){
+        Optional<Usuario> usuarioOpt = usuarioRepositorio.findById(id);
     
-    //     if (usuarioOpt.isPresent()) {
-    //         return usuarioOpt.get();
-    //     } else {
-    //         // Maneja el caso en que no se encuentre el usuario, por ejemplo, devolviendo null
-    //         return null;
-    //     }
-    // }
+        if (usuarioOpt.isPresent()) {
+            return usuarioOpt.get();
+        } else {
+            // Maneja el caso en que no se encuentre el usuario, por ejemplo, devolviendo null
+            return null;
+        }
+    }
     
     @Transactional(readOnly=true)
     public List<Usuario> listarUsuarios() {
@@ -107,20 +107,20 @@ public class UsuarioServicio{
         return usuarios;
     }
     
-    // @Transactional
-    // public void cambiarRol(UUID id){
-    //     Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+    @Transactional
+    public void cambiarRol(UUID id){
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 
-    //     if(respuesta.isPresent()) {
+        if(respuesta.isPresent()) {
 
-    //         Usuario usuario = respuesta.get();
-    //     if(usuario.getRol().equals(Rol.USER)) {
-    //         usuario.setRol(Rol.ADMIN);
-    //     }else if(usuario.getRol().equals(Rol.ADMIN)) {
-    //             usuario.setRol(Rol.USER);
-    //         }
-    //     }
-    // }
+            Usuario usuario = respuesta.get();
+        if(usuario.getRol().equals(Rol.USER)) {
+            usuario.setRol(Rol.ADMIN);
+        }else if(usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.USER);
+            }
+        }
+    }
     
     private void validar(String nombre, String email, String password, String password2) throws MiException {
 

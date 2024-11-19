@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Usuarios</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+
+
+
+    <body>
+        
+
+        <h1>Lista de Usuarios</h1>
+
+        
+    <a href="/fabrica/registrar" class="btn btn-primary">Nuevo Usuario</a>
+
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Panel de Administración</h1>
+                <p class="dashboard-subtitle">Gestiona tu tienda de manera eficiente</p>
+            </div>
+            <div class="container m-5" >
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id del Usuario</th>
+                        <th>Nombre</th>
+                        <th>Foto de Perfil</th>
+                        <th>Rol</th>
+                        <th>Cambiar Rol</th>
+                        <th>Modificar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.idUsuario}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td>
+                            <a th:href="@{/usuario/modificar/__${usuario.idUsuario}__}" class="btn btn-edit">Editar</a>
+                            <form th:action="@{/usuario/eliminar/__${usuario.idUsuario}__}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                            </form>
+                        </td>
+                        <td th:text="${usuario.rol}"></td>
+                        <td>
+                            <a th:href="@{'/admin/modificarRol/' + ${usuario.id}}">
+                                <i class="fas fa-feather-alt"></i> Cambiar
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/usuario/modificar/' + ${usuario.id}}">
+                                <i class="fas fa-feather-alt"></i> Modificar
+                            </a>
+                        </td>
+                        <td>
+                            <a th:if="${usuario.imagen != null}" th:href="@{'/perfil/' + ${usuario.id}}">
+                                <img class="logo" th:src="@{'/imagen/perfil/' + ${usuario.id}}" alt="Perfil del usuario" />
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                
+                <div th:if="${exito != null}" class="alert alert-success" th:text="${exito}"></div>
+                <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <a th:href="@{/admin/dashboard }" class="btn btn-primary my-2">Volver</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

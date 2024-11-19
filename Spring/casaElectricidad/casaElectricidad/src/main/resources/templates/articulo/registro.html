@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Fábrica</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Registro de Artículo</h1>
+
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+    <form th:action="@{/articulo/registro}" method="POST" class="form">
+        <div class="form-group">
+            <label for="nombreArticulo">Nombre del artículo:</label>
+            <input type="text" class="form-control" name="nombreArticulo" id="nombreArticulo" required>
+            <label for="precioArticulo">Precio de artículo:</label>
+            <input type="number" class="form-control" name="precioArticulo" id="precioArticulo" required>
+            <label for="descripcionArticulo">Descripción del artículo:</label>
+            <textarea class="form-control" name="descripcionArticulo" id="descripcionArticulo" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        <a href="/articulo/lista" class="btn btn-secondary">Volver</a>
+    </form>
+</div>
+</body>
+</html>

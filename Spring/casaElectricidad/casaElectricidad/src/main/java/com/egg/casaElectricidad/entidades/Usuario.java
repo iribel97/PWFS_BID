@@ -33,5 +33,8 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Rol rol;
+
+    @OneToOne
+    private Imagen imagen;
     
 }
