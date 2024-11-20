@@ -28,8 +28,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class UsuarioServicio{
-// public class UsuarioServicio implements UserDetailsService {
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -140,23 +139,22 @@ public class UsuarioServicio{
 
     }
 
-    // @Override
-    // public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+     @Override
+     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-    //     Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+         Optional<Usuario> usuario = usuarioRepositorio.findByEmail(email);
 
-    //     if (usuario != null) {
-    //         List<GrantedAuthority> permisos = new ArrayList<GrantedAuthority>();
-    //         GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
-    //         permisos.add(p);
-    //         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-    //         HttpSession session = attr.getRequest().getSession(true);
-    //         session.setAttribute("usuariosession", usuario);
-    //         return new User(usuario.getEmail(), usuario.getPassword(), permisos);
-    //     } else {
-    //         return null;
-    //     }
-    // }
-
+         if (usuario != null) {
+             List<GrantedAuthority> permisos = new ArrayList<GrantedAuthority>();
+             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.get().getRol().toString());
+             permisos.add(p);
+             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+             HttpSession session = attr.getRequest().getSession(true);
+             session.setAttribute("usuariosession", usuario);
+             return new User(usuario.get().getEmail(), usuario.get().getPassword(), permisos);
+         } else {
+             return null;
+         }
+     }
 }
 

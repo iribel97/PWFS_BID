@@ -26,7 +26,6 @@ public class PortalControlador {
 
     @GetMapping("/")
     public String index() {
-
         return "index";
     }
 

@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
@@ -31,7 +32,7 @@ public class AdminControlador {
 
     @PostMapping("/usuarios/{id}/rol")
     public String cambiarRol(@PathVariable String id) {
-        //usuarioServicio.cambiarRol(id);
+        usuarioServicio.cambiarRol(UUID.fromString(id));
         return "redirect:/admin/usuarios";
     }
 
