@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Articulos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+<div class="container">
+    <h1>Lista de Articulos</h1>
+
+    <div th:if="${exito != null}" class="alert alert-success" th:text="${exito}"></div>
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+    <a href="/articulo/registrar" class="btn btn-primary">Nuevo Articulo</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Fabrica</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="articulo : ${articulos}">
+            <td th:text="${articulo.idArticulo}"></td>
+            <td th:text="${articulo.nroArticulo}"></td>
+            <td th:text="${articulo.nombreArticulo}"></td>
+            <td th:text="${articulo.descripcionArticulo}"></td>
+            <td th:text="${articulo.fabrica.nombreFabrica}"></td>
+            <td>
+                <a th:href="@{/articulo/modificar/__${articulo.idArticulo}__}" class="btn btn-edit">Editar</a>
+                <form th:action="@{/articulo/eliminar/__${articulo.idArticulo}__}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="~{layout :: footer}"></div>
+</body>
+</html>

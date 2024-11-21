@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Articulo</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+<div class="container">
+    <h1>Modificar Articulo</h1>
+
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+    <form th:action="@{/articulo/modificar/__${articulo.idArticulo}__}" method="POST" class="form">
+        <div class="form-group">
+            <label for="nombre">Nombre del Articulo:</label>
+            <input type="text" class="form-control" name="nombre"
+                   id="nombre" th:value="${articulo.nombreArticulo}" required>
+            <label for="descripcion">Descipcion de el Articulo:</label>
+            <input type="text" class="form-control" name="descripcion"
+                   id="descripcion" th:value="${articulo.descripcionArticulo}">
+            <select name="idFabrica">
+                <option th:value="${articulo.fabrica.idFabrica}">Seleccionar Articulo</option>
+
+                <option th:each="fabrica : ${fabricas}"
+                        th:value="${fabrica.idFabrica}"
+                        th:text="${fabrica.nombreFabrica}"
+                >
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="/articulo/lista" class="btn btn-secondary">Volver</a>
+    </form>
+</div>
+<div th:replace="~{layout :: footer}"></div>
+</body>
+</html>

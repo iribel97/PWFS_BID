@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<div th:replace="~{layout :: nav}"></div>
 <div class="container">
     <h1>Lista de Fábricas</h1>
 
@@ -36,5 +37,6 @@
         </tbody>
     </table>
 </div>
+<div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

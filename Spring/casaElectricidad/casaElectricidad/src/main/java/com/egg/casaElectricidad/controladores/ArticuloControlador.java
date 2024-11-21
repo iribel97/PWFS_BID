@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.UUID;
@@ -41,12 +40,11 @@ public class ArticuloControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String descripcion,
-                           @RequestParam Double precio, @RequestParam Integer stock,
-                           @RequestParam UUID idFabrica, @RequestParam(required = false) MultipartFile imagen,
+                           @RequestParam String idFabrica, @RequestParam(required = false) MultipartFile imagen,
                            ModelMap modelo) {
         try {
             Fabrica fabrica = new Fabrica();
-            fabrica = fabricaServicio.getOne(idFabrica);
+            fabrica = fabricaServicio.getOne(UUID.fromString(idFabrica));
             articuloServicio.guardarArticulo(nombre, descripcion, fabrica);
             modelo.put("exito", "El artículo fue registrado exitosamente");
         } catch (MiException ex) {
@@ -69,13 +67,15 @@ public class ArticuloControlador {
 
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable UUID id, @RequestParam String nombre,
-                            @RequestParam String descripcion, @RequestParam Double precio,
-                            @RequestParam Integer stock, @RequestParam UUID idFabrica,
-                            @RequestParam(required = false) MultipartFile imagen,
+                            @RequestParam String descripcion, @RequestParam String idFabrica,
                             ModelMap modelo) {
         try {
             Articulo articulo = new Articulo();
+            Fabrica newFabrica = fabricaServicio.getOne(UUID.fromString(idFabrica));
             articulo = articuloServicio.obtenerArticuloPorId(id);
+            articulo.setNombreArticulo(nombre);
+            articulo.setDescripcionArticulo(descripcion);
+            articulo.setFabrica(newFabrica);
             articuloServicio.actualizarArticulo(articulo);
             modelo.put("exito", "El artículo fue modificado exitosamente");
         } catch (MiException ex) {

@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<div th:replace="~{layout :: nav}"></div>
 <div class="container">
     <h1>Registro de Fábrica</h1>
 
@@ -21,5 +22,6 @@
         <a href="/fabrica/lista" class="btn btn-secondary">Volver</a>
     </form>
 </div>
+<div th:replace="~{layout :: footer}"></div>
 </body>
 </html>
