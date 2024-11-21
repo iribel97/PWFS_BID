@@ -12,26 +12,34 @@
 
     <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
 
-    <form th:action="@{/articulo/modificar/__${articulo.idArticulo}__}" method="POST" class="form">
+    <form th:action="@{/articulo/modificar/__${articulo.idArticulo}__}" method="POST" class="form card login-card">
         <div class="form-group">
-            <label for="nombre">Nombre del Articulo:</label>
-            <input type="text" class="form-control" name="nombre"
+            <label class="form-label" for="nombre">Nombre de el Articulo:</label>
+            <input type="text" class="form-input" name="nombre"
                    id="nombre" th:value="${articulo.nombreArticulo}" required>
-            <label for="descripcion">Descipcion de el Articulo:</label>
-            <input type="text" class="form-control" name="descripcion"
-                   id="descripcion" th:value="${articulo.descripcionArticulo}">
-            <select name="idFabrica">
-                <option th:value="${articulo.fabrica.idFabrica}">Seleccionar Articulo</option>
+        </div>
 
+        <div class="form-group">
+            <label class="form-label" for="descripcion">Descipcion de el Articulo:</label>
+            <input type="text" class="form-input" name="descripcion"
+                   id="descripcion" th:value="${articulo.descripcionArticulo}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="idFabrica">Fábrica:</label>
+            <select class="form-input" name="idFabrica" id="idFabrica">
+                <option th:value="${articulo.fabrica.idFabrica}">Seleccionar Fabrica</option>
                 <option th:each="fabrica : ${fabricas}"
                         th:value="${fabrica.idFabrica}"
-                        th:text="${fabrica.nombreFabrica}"
-                >
+                        th:text="${fabrica.nombreFabrica}">
+                </option>
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        <a href="/articulo/lista" class="btn btn-secondary">Volver</a>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <a href="/articulo/lista" class="btn btn-outline">Volver</a>
+        </div>
     </form>
 </div>
 <div th:replace="~{layout :: footer}"></div>

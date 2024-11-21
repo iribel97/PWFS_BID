@@ -12,10 +12,10 @@
 
   <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
 
-  <form th:action="@{/fabrica/modificar/__${fabrica.idFabrica}__}" method="POST" class="form">
+  <form th:action="@{/fabrica/modificar/__${fabrica.idFabrica}__}" method="POST" class="form card login-card">
     <div class="form-group">
-      <label for="nombreFabrica">Nombre de la Fábrica:</label>
-      <input type="text" class="form-control" name="nombreFabrica"
+      <label class="form-label" for="nombreFabrica">Nombre de la Fábrica:</label>
+      <input type="text" class="form-input" name="nombreFabrica"
              id="nombreFabrica" th:value="${fabrica.nombreFabrica}" required>
     </div>
 
