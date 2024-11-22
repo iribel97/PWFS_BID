@@ -36,7 +36,7 @@ public class PortalControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
-            String password2, ModelMap modelo, MultipartFile archivo) {
+            @RequestParam String password2, ModelMap modelo, @RequestParam MultipartFile archivo) {
 
         try {
             usuarioServicio.registrar(archivo, nombre, email, password, password2);
@@ -75,7 +75,7 @@ public class PortalControlador {
             return "redirect:/admin/dashboard";
         }
         
-            return "inicio";
+            return "index";
     }
     
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")

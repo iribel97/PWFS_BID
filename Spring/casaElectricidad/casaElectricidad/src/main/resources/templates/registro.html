@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{layout :: nav}"></div>
+<div class="container">
+    <h1>Registrate</h1>
+
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+
+    <form th:action="@{/registro}" method="POST" class="form card login-card">
+        <div class="form-group">
+            <label class="form-label" for="email">Mail:</label>
+            <input type="text" class="form-input" name="email"
+                   id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="nombre">Nombre:</label>
+            <input type="text" class="form-input" name="nombre"
+                   id="nombre">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="password">Contraseña:</label>
+            <input type="password" class="form-input" name="password"
+                   id="password" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="password2">Verifique su contraseña:</label>
+            <input type="password" class="form-input" name="password2"
+                   id="password2" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="archivo">Foto de perfil:</label>
+            <input type="file" class="form-input" name="archivo"
+                   id="archivo" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+            <a href="/login" class="btn btn-outline">Volver</a>
+        </div>
+    </form>
+</div>
+<div th:replace="~{layout :: footer}"></div>
+</body>
+</html>
